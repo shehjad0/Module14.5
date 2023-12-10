@@ -1,0 +1,47 @@
+{% extends 'base.html' %} 
+
+{% block title %}Model Form{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<main class="container">
+  <h1 class="p-4">Model Form</h1>
+  <hr>
+  {% if data %}
+      <h3>Table</h3>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Address</th>
+            <th scope="col">Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for each in data %}
+            <tr>
+            <td>{{each.id}}</td>
+            <td>{{each.name}}</td>
+            <td>{{each.email}}</td>
+            <td>{{each.address}}</td>
+            <td>{{each.description}}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <h3>No data yet! Submit some data.</h3>
+  {% endif %}
+  <form method="post" class="pt-4 w-50 h-100 mx-auto" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h3>Form</h3>
+    {{ form | crispy }}
+    <button type="submit" class="btn my-3 bg-dark text-white">Submit</button>
+  </form>
+</main>
+
+{% endblock %}

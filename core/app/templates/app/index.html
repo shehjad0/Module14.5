@@ -1,0 +1,17 @@
+{% extends 'base.html' %} 
+
+{% block title %}Practice 14.5{% endblock %}
+
+{% block content %}
+
+<main class="container">
+  <h1 class="p-4">Practice 14.5</h1>
+  <div class="card_container d-flex justify-content-between flex-wrap">
+    <ul>
+      <li><a href="{% url 'formapi' %}">Form API</a></li>
+      <li><a href="{% url 'modelform' %}">Model Form</a></li>
+    </ul>
+  </div>
+</main>
+
+{% endblock %}
